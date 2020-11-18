@@ -1,0 +1,26 @@
+{
+    "name": "bisoon/tree",
+    "type": "project",
+    "authors": [
+        {
+            "name": "BISOON",
+            "email": "20063083+BISOON@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Tree\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "kahlan/kahlan": "^4.7"
+    },
+    "scripts": {
+        "test": "kahlan"
+    }
+}
