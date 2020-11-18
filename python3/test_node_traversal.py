@@ -1,6 +1,5 @@
 import unittest
 
-import traversal
 from node import Node
 
 """
@@ -10,7 +9,7 @@ from node import Node
 """
 
 
-class Traversal(unittest.TestCase):
+class TestNodeTraversal(unittest.TestCase):
     def setUp(self) -> None:
         self.root = Node(0)
         inner_right = self.root.insert_right(Node(2))
@@ -19,15 +18,15 @@ class Traversal(unittest.TestCase):
         inner_left.insert_left(Node(5))
 
     def test_inorder__values_should_match_the_order(self):
-        result = traversal.inorder_traversal(self.root)
+        result = self.root.inorder_traversal()
         self.assertEqual(result, [5, 3, 0, 2, 4])
 
     def test_preorder__values_should_match_the_order(self):
-        result = traversal.preorder_traversal(self.root)
+        result = self.root.preorder_traversal()
         self.assertEqual(result, [0, 3, 5, 2, 4])
 
     def test_postorder__values_should_match_the_order(self):
-        result = traversal.postorder_traversal(self.root)
+        result = self.root.postorder_traversal()
         self.assertEqual(result, [5, 3, 4, 2, 0])
 
 
