@@ -1,6 +1,7 @@
 
 
 #include "include/Traversal.hpp"
+
 //TODO refactor it all, covered in unit tests
 std::vector<int> Traversal::inorder(Node* root)
 {
@@ -35,9 +36,9 @@ std::vector<int> Traversal::preorder(Node* root)
     numbers.push_back(root->value);
     const std::vector<int>& leftNumbers = preorder(root->left);
 
-    for (int i = leftNumbers.size() - 1; i >= 0; --i)
+    for (int i: leftNumbers)
     {
-        numbers.push_back(leftNumbers.at(i));
+        numbers.push_back(i);
     }
 
     const std::vector<int>& vector = preorder(root->right);
@@ -60,19 +61,23 @@ std::vector<int> Traversal::postorder(Node* root)
     std::vector<int> numbers;
 
 
-    const std::vector<int>& leftNumbers = preorder(root->left);
+    const std::vector<int>& leftNumbers = postorder(root->left);
 
-    for (int i = leftNumbers.size() - 1; i >= 0; --i)
+    numbers.reserve(leftNumbers.size());
+
+    for (int i: leftNumbers)
     {
-        numbers.push_back(leftNumbers.at(i));
+        numbers.push_back(i);
     }
 
-    const std::vector<int>& vector = preorder(root->right);
+
+    const std::vector<int>& vector = postorder(root->right);
 
     for (int i : vector)
     {
         numbers.push_back(i);
     }
+
     numbers.push_back(root->value);
     return numbers;
 }

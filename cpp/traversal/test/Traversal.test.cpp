@@ -27,7 +27,7 @@ TEST_CASE("Traversal")
     {
         const std::vector<int>& nodes = traversal.preorder(&node);
         std::vector<int> expected{
-                0, 5, 3, 2, 4, 8
+                0, 3, 5, 2, 4, 8
         };
         REQUIRE_THAT(nodes, Catch::Matchers::Equals(expected));
     }
@@ -36,7 +36,7 @@ TEST_CASE("Traversal")
     {
         const std::vector<int>& nodes = traversal.postorder(&node);
         std::vector<int> expected{
-                5, 3, 2, 4, 8, 0
+                5, 3, 8, 4, 2, 0
         };
         REQUIRE_THAT(nodes, Catch::Matchers::Equals(expected));
     }
