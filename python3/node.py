@@ -1,7 +1,8 @@
 class Node:
+    right: 'Node' = None
+    left: 'Node' = None
+
     def __init__(self, data):
-        self.right = None
-        self.left = None
         self.data = data
 
     def insert_right(self, data) -> 'Node':
