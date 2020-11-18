@@ -59,23 +59,25 @@ void postorder_traversal(node_s* root)
     printf("%d\n", root->data);
 }
 
-void free_nodes(node_s* root)
+void free_nodes(node_s** root)
 {
-    if (root == NULL)
+    if (*root == NULL)
     {
         return;
     }
 
-    free_nodes(root->right);
-    free_nodes(root->left);
+    node_s* currentNode = *root;
+    free_nodes(&currentNode->right);
+    free_nodes(&currentNode->left);
 
-    free(root);
+    free(*root);
+    *root = NULL;
 }
 
 int main()
 {
     node_s* root = create_node(0);
-
+    printf("root: %p\n", root);
 
     node_s* right = insert_right(root, 2);
     insert_right(right, 4);
@@ -90,12 +92,11 @@ int main()
     printf("----preorder traversal----\n");
     preorder_traversal(root);
 
-
     printf("----postorder traversal----\n");
     postorder_traversal(root);
 
 
-    free_nodes(root);
-
+    free_nodes(&root);
+    printf("root: %p\n", root);
     return 0;
 }
