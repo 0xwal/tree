@@ -22,41 +22,41 @@ class Node
         this.left = node;
         return node;
     }
-}
 
-function inorder_traversal(node)
-{
-    if (node === undefined) {
-        return;
+    inorderTraversal()
+    {
+        if (this.left) {
+            this.left.inorderTraversal();
+        }
+        console.log(this.value);
+        if (this.right) {
+            this.right.inorderTraversal();
+        }
     }
 
-    inorder_traversal(node.left);
-    console.log(node.value);
-    inorder_traversal(node.right);
-}
-
-function preorder_traversal(node)
-{
-    if (node === undefined) {
-        return;
+    preorderTraversal()
+    {
+        console.log(this.value);
+        if (this.left) {
+            this.left.preorderTraversal();
+        }
+        if (this.right) {
+            this.right.preorderTraversal();
+        }
     }
 
-    console.log(node.value);
-    preorder_traversal(node.left);
-    preorder_traversal(node.right);
-}
-
-
-function postorder_traversal(node)
-{
-    if (node === undefined) {
-        return;
+    postorderTraversal()
+    {
+        if (this.left) {
+            this.left.postorderTraversal();
+        }
+        if (this.right) {
+            this.right.postorderTraversal();
+        }
+        console.log(this.value);
     }
-
-    postorder_traversal(node.left);
-    postorder_traversal(node.right);
-    console.log(node.value);
 }
+
 
 const root = new Node(0);
 
@@ -68,10 +68,10 @@ leftNode.insertLeft(5);
 
 
 console.log('----inorder traversal----');
-inorder_traversal(root);
+root.inorderTraversal();
 
 console.log('----preorder traversal----');
-preorder_traversal(root);
+root.preorderTraversal();
 
 console.log('----postorder traversal----');
-postorder_traversal(root);
+root.postorderTraversal();
