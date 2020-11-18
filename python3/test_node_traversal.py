@@ -12,10 +12,10 @@ from node import Node
 class TestNodeTraversal(unittest.TestCase):
     def setUp(self) -> None:
         self.root = Node(0)
-        inner_right = self.root.insert_right(Node(2))
-        inner_right.insert_right(Node(4))
-        inner_left = self.root.insert_left(Node(3))
-        inner_left.insert_left(Node(5))
+        inner_right = self.root.insert_right(2)
+        inner_right.insert_right(4)
+        inner_left = self.root.insert_left(3)
+        inner_left.insert_left(5)
 
     def test_inorder__values_should_match_the_order(self):
         result = self.root.inorder_traversal()

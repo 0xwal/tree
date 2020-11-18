@@ -4,13 +4,15 @@ class Node:
         self.left = None
         self.data = data
 
-    def insert_right(self, node: 'Node') -> 'Node':
-        self.right = node
-        return node
+    def insert_right(self, data) -> 'Node':
+        data = Node(data)
+        self.right = data
+        return data
 
-    def insert_left(self, node: 'Node') -> 'Node':
-        self.left = node
-        return node
+    def insert_left(self, data) -> 'Node':
+        data = Node(data)
+        self.left = data
+        return data
 
     def inorder_traversal(self) -> list:
         numbers = []
