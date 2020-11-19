@@ -20,27 +20,24 @@ class BinarySearchTree
             return;
         }
 
-        if ($data > $this->root->data) {
-            $tmpNode = $this->root;
-            while (true) {
-                if ($tmpNode->right !== null) {
-                    $tmpNode = $tmpNode->right;
-                    continue;
-                }
-                $tmpNode->right = new Node($data);
-                break;
-            }
-        } else {
-            $tmpNode = $this->root;
-            while (true) {
-                if ($tmpNode->left !== null) {
-                    $tmpNode = $tmpNode->left;
-                    continue;
-                }
-                $tmpNode->left = new Node($data);
-                break;
-            }
-        }
+        $this->innerAdd($this->root, $data);
     }
 
+    private function innerAdd(Node $currentNode, $data)
+    {
+        if ($data > $currentNode->data) {
+            if ($currentNode->right !== null) {
+                $this->innerAdd($currentNode->right, $data);
+                return;
+            }
+            $currentNode->right = new Node($data);
+        } else {
+
+            if ($currentNode->left !== null) {
+                $this->innerAdd($currentNode->left, $data);
+                return;
+            }
+            $currentNode->left = new Node($data);
+        }
+    }
 }
