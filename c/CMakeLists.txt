@@ -14,7 +14,7 @@ list(APPEND _SOURCES
      src/clist.c)
 
 
-add_executable(${PROJECT_NAME}_traversal ${_SOURCES})
+add_executable(${PROJECT_NAME}_traversal src/main.c ${_SOURCES})
 
 set(_TARGET_LIB ${PROJECT_NAME}_lib)
 
