@@ -13,17 +13,17 @@ class BinarySearchTree:
             self.__root = Node(data)
             return
 
-        node = self.__root
-        while True:
-            if data > node.data:
-                if node.right is not None:
-                    node = node.right
-                    continue
-                node.right = Node(data)
-                break
-            else:
-                if node.left is not None:
-                    node = node.left
-                    continue
-                node.left = Node(data)
-                break
+        self.__add(self.__root, data)
+
+    def __add(self, node: Node, data):
+
+        if data > node.data:
+            if node.right is not None:
+                self.__add(node.right, data)
+                return
+            node.right = Node(data)
+        else:
+            if node.left is not None:
+                self.__add(node.left, data)
+                return
+            node.left = Node(data)
