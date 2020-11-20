@@ -14,6 +14,7 @@ add_executable(${PROJECT_NAME} main.cpp
                node.test.cpp
                traversal.test.cpp
                clist.test.cpp
+               binary-search-tree.test.cpp
                )
 
 target_link_libraries(${PROJECT_NAME} ${_TARGET_LIB})

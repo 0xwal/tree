@@ -8,6 +8,7 @@ list(APPEND _SOURCES
      src/node.c
      src/include/traversal.h
      src/traversal.c
+     src/include/binary-search-tree.h
      src/binary-search-tree.c
      src/include/clist.h
      src/clist.c)
