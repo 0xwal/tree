@@ -9,17 +9,21 @@ class BinarySearchTree:
         return self.__root
 
     def add(self, data):
-        if self.__root is None:
+        if self.root is None:
             self.__root = Node(data)
             return
 
-        if data < self.__root.data:
-            tmp_node = self.__root
-            while tmp_node.left is not None:
-                tmp_node = tmp_node.left
-            tmp_node.insert_left(data)
-        else:
-            tmp_node = self.__root
-            while tmp_node.right is not None:
-                tmp_node = tmp_node.right
-            tmp_node.insert_right(data)
+        node = self.__root
+        while True:
+            if data > node.data:
+                if node.right is not None:
+                    node = node.right
+                    continue
+                node.right = Node(data)
+                break
+            else:
+                if node.left is not None:
+                    node = node.left
+                    continue
+                node.left = Node(data)
+                break

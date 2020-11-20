@@ -52,21 +52,24 @@ class TestBinarySearchTree(unittest.TestCase):
 
     def test_mixed_numbers_should_be_in_correct_order_in_the_tree(self):
         #          5
-        #       2     8
-        #     4     7   9
-        #   3
+        #      2        9
+        #    1   3    7   10
+        #  0        6   8
         #
         #
         #
         bst = BinarySearchTree()
         bst.add(5)
         bst.add(2)
-        bst.add(4)
+        bst.add(1)
         bst.add(3)
-        bst.add(8)
-        bst.add(7)
         bst.add(9)
-        self.assertEqual(bst.root.preorder_traversal(), [5, 2, 4, 3, 8, 7, 9])
+        bst.add(10)
+        bst.add(7)
+        bst.add(6)
+        bst.add(8)
+        bst.add(0)
+        self.assertEqual(bst.root.preorder_traversal(), [5, 2, 1, 0, 3, 9, 7, 6, 8, 10])
 
 
 if __name__ == '__main__':
