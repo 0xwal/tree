@@ -26,7 +26,7 @@ class TestBinarySearchTree(unittest.TestCase):
         bst.add(4)
         self.assertEqual(bst.root.preorder_traversal(), [5, 4])
 
-    def test_larger_numer_should_be_added_to_the_right_side_of_tree(self):
+    def test_larger_number_should_be_added_to_the_right_side_of_tree(self):
         bst = BinarySearchTree()
         bst.add(5)
         bst.add(6)
