@@ -13,11 +13,11 @@ TEST_CASE("traversal")
      *
      * */
 
-    node_s* root = create_node(0);
-    node_s* innerRight = insert_right(root, 2);
-    node_s* innerLeft = insert_left(root, 3);
-    insert_right(innerRight, 4);
-    insert_left(innerLeft, 5);
+    node_s* root = node_create(0);
+    node_s* innerRight = node_insert_right(root, 2);
+    node_s* innerLeft = node_insert_left(root, 3);
+    node_insert_right(innerRight, 4);
+    node_insert_left(innerLeft, 5);
 
     clist_s* list = clist_init(16);
 

@@ -15,10 +15,10 @@ extern "C" {
 #endif
 
 
-node_s* create_node(int value);
-node_s* insert_right(node_s* parent, int value);
-node_s* insert_left(node_s* parent, int value);
-void free_nodes(node_s** root);
+node_s* node_create(int value);
+node_s* node_insert_right(node_s* parent, int value);
+node_s* node_insert_left(node_s* parent, int value);
+void node_destroy(node_s** root);
 
 
 #ifdef __cplusplus
