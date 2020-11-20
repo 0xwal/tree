@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "node.h"
+#include "include/node.h"
 
 node_s* create_node(int value)
 {
