@@ -5,6 +5,8 @@ set(CMAKE_C_STANDARD 11)
 
 list(APPEND _SOURCES
      src/include/node.h
+     src/node.c
+     src/include/traversal.h
      src/traversal.c
      src/binary-search-tree.c
      src/include/clist.h
