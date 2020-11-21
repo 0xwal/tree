@@ -59,7 +59,5 @@ describe('Node', function ()
             $result = $this->rootNode->postorderTraversal();
             expect($result)->toEqual( [5, 3, 4, 2, 0]);
         });
-
     });
-
 });
