@@ -65,6 +65,12 @@ int bst_find(binary_search_tree_s* bst, int value)
     return -1;
 }
 
+void bst_destroy(binary_search_tree_s** bst)
+{
+    free(*bst);
+    *bst = NULL;
+}
+
 void bst_internal_add(node_s* currentNode, int value)
 {
     int currentNodeValue = currentNode->data;

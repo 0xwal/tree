@@ -22,6 +22,8 @@ void bst_add(binary_search_tree_s* bst, int value);
 
 int bst_find(binary_search_tree_s* bst, int value);
 
+void bst_destroy(binary_search_tree_s** bst);
+
 #ifdef __cplusplus
 }
 #endif

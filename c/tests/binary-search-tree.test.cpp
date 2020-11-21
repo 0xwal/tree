@@ -17,14 +17,17 @@ TEST_CASE("binary search tree")
     SECTION("initialization")
     {
         binary_search_tree_s* bst = bst_create();
-        REQUIRE(bst->root == NULL);
+        SECTION("root should be 0")
+        {
+            REQUIRE(bst->root == NULL);
+        }
     }
 
     SECTION("insertion")
     {
+        binary_search_tree_s* bst = bst_create();
         SECTION("when adding for first time we should assign the node to root")
         {
-            binary_search_tree_s* bst = bst_create();
             bst_add(bst, 4);
             REQUIRE(bst->root != NULL);
             REQUIRE(bst->root->data == 4);
@@ -32,7 +35,6 @@ TEST_CASE("binary search tree")
 
         SECTION("added node should have NULL for both right and left")
         {
-            binary_search_tree_s* bst = bst_create();
             bst_add(bst, 4);
             REQUIRE(bst->root->right == NULL);
             REQUIRE(bst->root->left == NULL);
@@ -43,7 +45,6 @@ TEST_CASE("binary search tree")
 
         SECTION("when adding for second or more time we should not change the root node")
         {
-            binary_search_tree_s* bst = bst_create();
             bst_add(bst, 4);
             bst_add(bst, 5);
             REQUIRE(bst->root->data == 4);
@@ -54,7 +55,6 @@ TEST_CASE("binary search tree")
 
         SECTION("should add a larger value of the current node to right")
         {
-            binary_search_tree_s* bst = bst_create();
             bst_add(bst, 4);
             bst_add(bst, 5);
             bst_add(bst, 6);
@@ -65,7 +65,6 @@ TEST_CASE("binary search tree")
 
         SECTION("should add a smaller value than the current node to left")
         {
-            binary_search_tree_s* bst = bst_create();
             bst_add(bst, 6);
             bst_add(bst, 5);
             bst_add(bst, 4);
@@ -76,7 +75,6 @@ TEST_CASE("binary search tree")
 
         SECTION("mixed with larger and smaller")
         {
-            binary_search_tree_s* bst = bst_create();
             bst_add(bst, 6);
             bst_add(bst, 8);
             bst_add(bst, 5);
@@ -86,6 +84,8 @@ TEST_CASE("binary search tree")
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 3, 4, 8 });
         }
+
+        bst_destroy(&bst);
     }
 
     SECTION("retrieving")
@@ -115,6 +115,19 @@ TEST_CASE("binary search tree")
         SECTION("return -1 for value that not exist")
         {
             REQUIRE(bst_find(bst, 10) == -1);
+        }
+
+        bst_destroy(&bst);
+    }
+
+    SECTION("destroying")
+    {
+        SECTION("should be NULL after destroying")
+        {
+            binary_search_tree_s* bst = bst_create();
+            REQUIRE(bst != NULL);
+            bst_destroy(&bst);
+            REQUIRE(bst == NULL);
         }
     }
 }
