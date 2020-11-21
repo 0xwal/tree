@@ -71,6 +71,42 @@ class TestBinarySearchTree(unittest.TestCase):
         bst.add(0)
         self.assertEqual(bst.root.preorder_traversal(), [5, 2, 1, 0, 3, 9, 7, 6, 8, 10])
 
+    def test_find_an_existent_value(self):
+        #          5
+        #      2        9
+        #    1   3    7   10
+        #  0        6   8
+        #
+        #
+        #
+        bst = BinarySearchTree()
+        bst.add(5)
+        bst.add(2)
+        bst.add(1)
+        bst.add(3)
+        bst.add(9)
+        bst.add(10)
+        bst.add(7)
+        bst.add(6)
+        bst.add(8)
+        bst.add(0)
+        self.assertEqual(bst.find(5), 0)
+        self.assertEqual(bst.find(9), 1)
+        self.assertEqual(bst.find(7), 2)
+        self.assertEqual(bst.find(2), 1)
+        self.assertEqual(bst.find(3), 2)
+        self.assertEqual(bst.find(0), 3)
+        self.assertEqual(bst.find(8), 3)
+
+    def test_find_value_that_does_not_exist(self):
+        bst = BinarySearchTree()
+        bst.add(5)
+        self.assertEqual(bst.find(100), -1)
+
+    def test_try_to_find_a_value_with_bst_that_has_no_node(self):
+        bst = BinarySearchTree()
+        self.assertEqual(bst.find(100), -1)
+
 
 if __name__ == '__main__':
     unittest.main()
