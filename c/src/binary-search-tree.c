@@ -22,6 +22,49 @@ void bst_add(binary_search_tree_s* bst, int value)
     bst_internal_add(bst->root, value);
 }
 
+int bst_find(binary_search_tree_s* bst, int value)
+{
+
+
+    node_s* node = bst->root;
+    int iteration = -1;
+
+
+    while (1)
+    {
+        iteration++;
+
+        if (node->data == value)
+        {
+            return iteration;
+        }
+
+        if (value > node->data)
+        {
+            if (node->right != NULL)
+            {
+                node = node->right;
+                continue;
+            }
+        }
+        else
+        {
+            if (node->left != NULL)
+            {
+                node = node->left;
+                continue;
+            }
+        }
+
+        if (node->right == NULL && node->left == NULL)
+        {
+            break;
+        }
+    }
+
+    return -1;
+}
+
 void bst_internal_add(node_s* currentNode, int value)
 {
     int currentNodeValue = currentNode->data;

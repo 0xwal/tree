@@ -17,7 +17,10 @@ extern "C" {
 
 
 binary_search_tree_s* bst_create();
+
 void bst_add(binary_search_tree_s* bst, int value);
+
+int bst_find(binary_search_tree_s* bst, int value);
 
 #ifdef __cplusplus
 }

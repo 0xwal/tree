@@ -87,4 +87,34 @@ TEST_CASE("binary search tree")
             COMPARE_NODES(list, { 6, 5, 3, 4, 8 });
         }
     }
+
+    SECTION("retrieving")
+    {
+        binary_search_tree_s* bst = bst_create();
+        bst_add(bst, 6);
+        bst_add(bst, 8);
+        bst_add(bst, 5);
+        bst_add(bst, 3);
+        bst_add(bst, 4);
+
+        SECTION("find root value and return iteration as 0")
+        {
+            REQUIRE(bst_find(bst, 6) == 0);
+        }
+
+        SECTION("find value and return the iteration as 1")
+        {
+            REQUIRE(bst_find(bst, 8) == 1);
+        }
+
+        SECTION("find value")
+        {
+            REQUIRE(bst_find(bst, 5) == 1);
+        }
+
+        SECTION("return -1 for value that not exist")
+        {
+            REQUIRE(bst_find(bst, 10) == -1);
+        }
+    }
 }
