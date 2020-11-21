@@ -29,6 +29,11 @@ int bst_find(binary_search_tree_s* bst, int value)
     node_s* node = bst->root;
     int iteration = 0;
 
+    if (node == NULL)
+    {
+        return -1;
+    }
+
 
     while (1)
     {

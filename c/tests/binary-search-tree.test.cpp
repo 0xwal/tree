@@ -133,6 +133,12 @@ TEST_CASE("binary search tree")
             REQUIRE(bst_find(bst, 10) == -1);
         }
 
+        SECTION("trying to find a value when bst is empty")
+        {
+            binary_search_tree_s* b = bst_create();
+            REQUIRE(bst_find(b, 10) == -1);
+        }
+
         bst_destroy(&bst);
     }
 
