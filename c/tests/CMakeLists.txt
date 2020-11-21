@@ -12,7 +12,6 @@ FetchContent_MakeAvailable(Catch2)
 
 add_executable(${PROJECT_NAME} main.cpp
                node.test.cpp
-               traversal.test.cpp
                clist.test.cpp
                binary-search-tree.test.cpp
                )

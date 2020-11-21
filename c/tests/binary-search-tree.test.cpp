@@ -2,7 +2,6 @@
 
 #include <catch2/catch.hpp>
 #include <binary-search-tree.h>
-#include <traversal.h>
 
 #define COMPARE_NODES(clistPointer, values...) \
     int expectedValues[] = values;         \
@@ -21,7 +20,7 @@ TEST_CASE("binary search tree")
         REQUIRE(bst->root == NULL);
     }
 
-    SECTION("addition")
+    SECTION("insertion")
     {
         SECTION("when adding for first time we should assign the node to root")
         {
@@ -60,7 +59,7 @@ TEST_CASE("binary search tree")
             bst_add(bst, 5);
             bst_add(bst, 6);
             clist_s* list = clist_init(16);
-            preorder_traversal(bst->root, list);
+            node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 4, 5, 6 });
         }
 
@@ -71,7 +70,7 @@ TEST_CASE("binary search tree")
             bst_add(bst, 5);
             bst_add(bst, 4);
             clist_s* list = clist_init(16);
-            preorder_traversal(bst->root, list);
+            node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 4 });
         }
 
@@ -84,7 +83,7 @@ TEST_CASE("binary search tree")
             bst_add(bst, 3);
             bst_add(bst, 4);
             clist_s* list = clist_init(16);
-            preorder_traversal(bst->root, list);
+            node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 3, 4, 8 });
         }
     }
