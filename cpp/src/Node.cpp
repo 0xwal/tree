@@ -27,10 +27,7 @@ std::list<int> Node::preorderTraversal() const
     if (left != nullptr)
     {
         std::list<int> leftValues = left->preorderTraversal();
-        for (int i: leftValues)
-        {
-            list.push_back(i);
-        }
+        list.merge(leftValues);
     }
 
     if (right != nullptr)
@@ -51,10 +48,7 @@ std::list<int> Node::inorderTraversal() const
     if (left != nullptr)
     {
         std::list<int> leftValues = left->inorderTraversal();
-        for (int i: leftValues)
-        {
-            list.push_back(i);
-        }
+        list.merge(leftValues);
     }
 
     list.push_back(value);
@@ -77,10 +71,7 @@ std::list<int> Node::postorderTraversal() const
     if (left != nullptr)
     {
         std::list<int> leftValues = left->postorderTraversal();
-        for (int i: leftValues)
-        {
-            list.push_back(i);
-        }
+        list.merge(leftValues);
     }
 
 
