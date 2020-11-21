@@ -27,25 +27,23 @@ int bst_find(binary_search_tree_s* bst, int value)
 
 
     node_s* node = bst->root;
-    int iteration = -1;
+    int iteration = 0;
 
 
     while (1)
     {
-        iteration++;
 
         if (node->data == value)
         {
             return iteration;
         }
 
-        if (value > node->data)
+        iteration++;
+
+        if (value > node->data && node->right != NULL)
         {
-            if (node->right != NULL)
-            {
-                node = node->right;
-                continue;
-            }
+            node = node->right;
+            continue;
         }
         else
         {

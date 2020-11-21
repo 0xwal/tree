@@ -91,6 +91,13 @@ TEST_CASE("binary search tree")
     SECTION("retrieving")
     {
         binary_search_tree_s* bst = bst_create();
+        /*
+         *        6
+         *     5     8
+         *   3
+         *     4
+         *
+         * */
         bst_add(bst, 6);
         bst_add(bst, 8);
         bst_add(bst, 5);
@@ -99,17 +106,26 @@ TEST_CASE("binary search tree")
 
         SECTION("find root value and return iteration as 0")
         {
+            // [0](6:✅)
             REQUIRE(bst_find(bst, 6) == 0);
         }
 
         SECTION("find value and return the iteration as 1")
         {
+            // [0]6 -> [1](8:✅)
             REQUIRE(bst_find(bst, 8) == 1);
         }
 
-        SECTION("find value")
+        SECTION("find value 5 and return iteration as 1")
         {
+            // [0]6 -> [1](5:✅)
             REQUIRE(bst_find(bst, 5) == 1);
+        }
+
+        SECTION("find value 4 and return iteration as 3")
+        {
+            // [0]6 -> [1]5 -> [2]3 -> [3](4:✅)
+            REQUIRE(bst_find(bst, 4) == 3);
         }
 
         SECTION("return -1 for value that not exist")
