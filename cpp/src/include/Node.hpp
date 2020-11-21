@@ -19,9 +19,9 @@ public:
 
     std::shared_ptr<Node> insertLeft(int v);
 
-    std::list<int> preorderTraversal() const;
-    std::list<int> inorderTraversal() const;
-    std::list<int> postorderTraversal() const;
+    [[nodiscard]] std::list<int> preorderTraversal() const;
+    [[nodiscard]] std::list<int> inorderTraversal() const;
+    [[nodiscard]] std::list<int> postorderTraversal() const;
 
 };
 
