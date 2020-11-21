@@ -12,6 +12,7 @@ FetchContent_MakeAvailable(Catch2)
 add_executable(${PROJECT_NAME}
                main.cpp
                Node.test.cpp
+               BinarySearchTree.test.cpp
                )
 
 target_link_libraries(${PROJECT_NAME} Catch2::Catch2)

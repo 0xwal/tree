@@ -6,7 +6,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 list(APPEND _SOURCES
      src/include/Node.hpp
-     src/Node.cpp)
+     src/Node.cpp
+     src/include/BinarySearchTree.hpp
+     src/BinarySearchTree.cpp)
 
 add_executable(${PROJECT_NAME}
                src/main.cpp
