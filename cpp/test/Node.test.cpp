@@ -35,20 +35,33 @@ TEST_CASE("Node")
 
     SECTION("traversal")
     {
-        Node root(10);
+        Node root(1);
 
-        root.insertRight(20)
-                ->insertRight(40);
+        auto innerRight = root.insertRight(2);
+        innerRight = innerRight->insertRight(3);
+        innerRight->insertRight(9);
+        innerRight->insertLeft(5);
 
-        root.insertLeft(30)
-                ->insertLeft(50);
+        auto innerLeft = root.insertLeft(70);
+        innerLeft = innerLeft->insertLeft(7);
+        innerLeft->insertRight(8);
+
+
+        /*
+         *         1
+         *      70    2
+         *    7          3
+         *       8     5  9
+         *
+         *
+         */
 
         SECTION("preorder traversal")
         {
             const std::list<int>& list = root.preorderTraversal();
             const std::vector result(list.begin(), list.end());
             const std::vector<int> expected{
-                    10, 30, 50, 20, 40
+                    1, 70, 7, 8, 2, 3, 5, 9
             };
 
             REQUIRE_THAT(result, Catch::Matchers::Equals(expected));
@@ -59,7 +72,7 @@ TEST_CASE("Node")
             const std::list<int>& list = root.inorderTraversal();
             const std::vector result(list.begin(), list.end());
             const std::vector<int> expected{
-                    50, 30, 10, 20, 40
+                    7, 8, 70, 1, 2, 5, 3, 9
             };
 
             REQUIRE_THAT(result, Catch::Matchers::Equals(expected));
@@ -70,7 +83,7 @@ TEST_CASE("Node")
             const std::list<int>& list = root.postorderTraversal();
             const std::vector result(list.begin(), list.end());
             const std::vector<int> expected{
-                    50, 30, 40, 20, 10
+                    8, 7, 70, 5, 9, 3, 2, 1
             };
 
             REQUIRE_THAT(result, Catch::Matchers::Equals(expected));
