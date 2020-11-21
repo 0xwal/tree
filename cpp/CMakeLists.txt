@@ -1,7 +1,22 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.15)
 
-project(tree)
+project(tree CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(traversal)
+list(APPEND _SOURCES
+     src/include/Node.hpp
+     src/Node.cpp)
+
+add_executable(${PROJECT_NAME}
+               src/main.cpp
+               ${_SOURCES}
+               )
+
+set(_TARGET ${PROJECT_NAME}_lib)
+
+add_library(${_TARGET} ${_SOURCES})
+
+target_include_directories(${_TARGET} PUBLIC src/include)
+
+add_subdirectory(test)
