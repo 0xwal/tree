@@ -11,6 +11,8 @@ public:
 
     void add(int value);
 
+    int find(int value) const;
+
 private:
     std::shared_ptr<Node> m_root;
 };

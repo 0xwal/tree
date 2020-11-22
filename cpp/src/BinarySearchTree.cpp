@@ -1,5 +1,6 @@
 
 #include <memory>
+#include <iostream>
 #include "include/BinarySearchTree.hpp"
 
 std::shared_ptr<Node> BinarySearchTree::root() const
@@ -15,7 +16,7 @@ void BinarySearchTree::add(int value)
         return;
     }
 
-    std::shared_ptr<Node> node = m_root;
+    std::shared_ptr<Node> node = root();
     while (true)
     {
         if (value > node->value)
@@ -40,4 +41,41 @@ void BinarySearchTree::add(int value)
             break;
         }
     }
+}
+
+int BinarySearchTree::find(int value) const
+{
+    std::shared_ptr<Node> node = this->root();
+    if (node == nullptr)
+    {
+        return -1;
+    }
+
+    int iteration = 0;
+    while (true)
+    {
+        if (value == node->value)
+        {
+            return iteration;
+        }
+
+        iteration++;
+
+        if (value > node->value && node->right != nullptr)
+        {
+            node = node->right;
+            continue;
+        }
+        else
+        {
+            if (node->left != nullptr)
+            {
+                node = node->left;
+                continue;
+            }
+        }
+
+        break;
+    }
+    return -1;
 }

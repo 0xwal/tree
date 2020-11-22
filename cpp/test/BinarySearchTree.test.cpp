@@ -1,5 +1,6 @@
 #include <catch2/catch.hpp>
 #include <BinarySearchTree.hpp>
+#include <iostream>
 
 TEST_CASE("BinarySearchTree")
 {
@@ -76,6 +77,57 @@ TEST_CASE("BinarySearchTree")
             };
 
             REQUIRE_THAT(result, Catch::Matchers::Equals(expected));
+        }
+    }
+
+    SECTION("retrieve")
+    {
+        SECTION("find existent value and return iteration count")
+        {
+            /*
+                     5
+                 2        9
+               1   3    7   10
+             0        6   8
+
+            */
+
+            BinarySearchTree bst;
+            bst.add(5);
+            bst.add(2);
+            bst.add(1);
+            bst.add(3);
+            bst.add(9);
+            bst.add(10);
+            bst.add(7);
+            bst.add(6);
+            bst.add(8);
+            bst.add(0);
+
+            REQUIRE(bst.find(5) == 0);
+            REQUIRE(bst.find(2) == 1);
+            REQUIRE(bst.find(9) == 1);
+            REQUIRE(bst.find(1) == 2);
+            REQUIRE(bst.find(3) == 2);
+            REQUIRE(bst.find(0) == 3);
+            REQUIRE(bst.find(7) == 2);
+            REQUIRE(bst.find(10) == 2);
+            REQUIRE(bst.find(6) == 3);
+            REQUIRE(bst.find(8) == 3);
+        }
+
+        SECTION("should return -1 when trying to find a non existent value")
+        {
+            BinarySearchTree bst;
+            bst.add(5);
+            bst.add(5);
+            REQUIRE(bst.find(100) == -1);
+        }
+
+        SECTION("should return -1 when tree is empty")
+        {
+            BinarySearchTree bst;
+            REQUIRE(bst.find(100) == -1);
         }
     }
 }
