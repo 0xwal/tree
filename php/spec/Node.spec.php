@@ -16,7 +16,7 @@ describe('Node', function ()
             $node = $this->rootNode->insertRight(5);
             expect($this->rootNode->right)->not->toBeNull();
             expect($node)->toBeAnInstanceOf(Node::class);
-            expect($node->data)->toEqual(5);
+            expect($node->value)->toEqual(5);
         });
 
 
@@ -26,7 +26,7 @@ describe('Node', function ()
             $node = $this->rootNode->insertLeft(5);
             expect($this->rootNode->left)->not->toBeNull();
             expect($node)->toBeAnInstanceOf(Node::class);
-            expect($node->data)->toEqual(5);
+            expect($node->value)->toEqual(5);
         });
     });
 
