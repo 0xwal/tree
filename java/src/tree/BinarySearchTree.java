@@ -35,4 +35,38 @@ public class BinarySearchTree
             break;
         }
     }
+
+    public int find(int value)
+    {
+        Node node = getRoot();
+
+        if (node == null) {
+            return -1;
+        }
+
+        int iteration = 0;
+        while (true) {
+            if (value == node.getValue()) {
+                return iteration;
+            }
+
+            if (value > node.getValue() && node.getRight() != null) {
+                node = node.getRight();
+                iteration++;
+                continue;
+            }
+            else {
+                if (node.getLeft() != null) {
+                    node = node.getLeft();
+                    iteration++;
+                    continue;
+                }
+            }
+
+            if (node.getRight() == null) {
+                break;
+            }
+        }
+        return -1;
+    }
 }

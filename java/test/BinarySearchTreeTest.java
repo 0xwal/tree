@@ -74,4 +74,49 @@ public class BinarySearchTreeTest
         List<Integer> expected = Arrays.asList(5, 2, 1, 0, 3, 9, 7, 6, 8, 10);
         Assert.assertEquals(expected, bst.getRoot().preorderTraversal());
     }
+
+    @Test
+    public void find_existent_value_and_return_iteration_count()
+    {
+         /*
+                      5
+                  2        9
+                1   3    7   10
+              0        6   8
+       */
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.add(5);
+        bst.add(2);
+        bst.add(1);
+        bst.add(3);
+        bst.add(9);
+        bst.add(10);
+        bst.add(7);
+        bst.add(6);
+        bst.add(8);
+        bst.add(0);
+        Assert.assertEquals(0, bst.find(5));
+        Assert.assertEquals(1, bst.find(9));
+        Assert.assertEquals(1, bst.find(2));
+        Assert.assertEquals(2, bst.find(7));
+        Assert.assertEquals(2, bst.find(10));
+        Assert.assertEquals(2, bst.find(3));
+        Assert.assertEquals(2, bst.find(1));
+        Assert.assertEquals(3, bst.find(0));
+    }
+
+    @Test
+    public void when_trying_to_find_non_existent_value()
+    {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.add(5);
+        Assert.assertEquals(-1, bst.find(100));
+    }
+
+    @Test
+    public void when_trying_to_find_in_empty_tree()
+    {
+        BinarySearchTree bst = new BinarySearchTree();
+        Assert.assertEquals(-1, bst.find(100));
+    }
 }
