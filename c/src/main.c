@@ -1,6 +1,11 @@
 #include <stdio.h>
-#include "include/node.h"
-#include "include/traversal.h"
+#include <node.h>
+
+void print_preorder_traversal(node_s* root, clist_s* list);
+
+void print_inorder_traversal(node_s* root, clist_s* list);
+
+void print_postorder_traversal(node_s* root, clist_s* list);
 
 int main()
 {
@@ -16,16 +21,49 @@ int main()
 
     clist_s* list = clist_init(16);
 
-    preorder_traversal(root, list);
+    print_preorder_traversal(root, list);
+    print_inorder_traversal(root, list);
+    print_postorder_traversal(root, list);
+
+
+    clist_free(&list);
+    node_destroy(&root);
+
+    return 0;
+}
+
+void print_preorder_traversal(node_s* root, clist_s* list)
+{
+    list->size = 0;
+    node_preorder_traversal(root, list);
 
     for (int i = 0; i < list->size; ++i)
     {
         printf("%d ", list->data[i]);
     }
     printf("\n");
+}
 
-    clist_free(&list);
-    node_destroy(&root);
+void print_inorder_traversal(node_s* root, clist_s* list)
+{
+    list->size = 0;
+    node_inorder_traversal(root, list);
 
-    return 0;
+    for (int i = 0; i < list->size; ++i)
+    {
+        printf("%d ", list->data[i]);
+    }
+    printf("\n");
+}
+
+void print_postorder_traversal(node_s* root, clist_s* list)
+{
+    list->size = 0;
+    node_postorder_traversal(root, list);
+
+    for (int i = 0; i < list->size; ++i)
+    {
+        printf("%d ", list->data[i]);
+    }
+    printf("\n");
 }

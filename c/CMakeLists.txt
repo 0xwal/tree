@@ -13,6 +13,7 @@ list(APPEND _SOURCES
 
 
 add_executable(${PROJECT_NAME}_traversal src/main.c ${_SOURCES})
+target_include_directories(${PROJECT_NAME}_traversal PRIVATE src/include)
 
 set(_TARGET_LIB ${PROJECT_NAME}_lib)
 
