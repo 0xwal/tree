@@ -21,6 +21,7 @@ TEST_CASE("binary search tree")
         {
             REQUIRE(bst->root == NULL);
         }
+        bst_destroy(&bst);
     }
 
     SECTION("insertion")
@@ -61,6 +62,7 @@ TEST_CASE("binary search tree")
             clist_s* list = clist_init(16);
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 4, 5, 6 });
+            clist_free(&list);
         }
 
         SECTION("should add a smaller value than the current node to left")
@@ -71,6 +73,7 @@ TEST_CASE("binary search tree")
             clist_s* list = clist_init(16);
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 4 });
+            clist_free(&list);
         }
 
         SECTION("mixed with larger and smaller")
@@ -83,6 +86,7 @@ TEST_CASE("binary search tree")
             clist_s* list = clist_init(16);
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 3, 4, 8 });
+            clist_free(&list);
         }
 
         bst_destroy(&bst);
@@ -137,6 +141,7 @@ TEST_CASE("binary search tree")
         {
             binary_search_tree_s* b = bst_create();
             REQUIRE(bst_find(b, 10) == -1);
+            bst_destroy(&b);
         }
 
         bst_destroy(&bst);

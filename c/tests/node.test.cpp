@@ -22,20 +22,21 @@ TEST_CASE("node")
 
     SECTION("insertion")
     {
-        node_s* rootNode = node_create(5);
         SECTION("able to insert to the right of the rootNode")
         {
-            node_s* root = node_create(5);
-            node_insert_right(root, 6);
-            REQUIRE(root->right->data == 6);
+            node_s* rootNode = node_create(5);
+            node_insert_right(rootNode, 6);
+            REQUIRE(rootNode->right->data == 6);
+            node_destroy(&rootNode);
         }
 
         SECTION("able to insert to the left of the rootNode")
         {
+            node_s* rootNode = node_create(5);
             node_insert_left(rootNode, 6);
             REQUIRE(rootNode->left->data == 6);
+            node_destroy(&rootNode);
         }
-        node_destroy(&rootNode);
     }
 
     SECTION("destroying")
@@ -70,9 +71,6 @@ TEST_CASE("node")
         node_insert_left(innerLeft, 5);
 
         clist_s* list = clist_init(16);
-
-
-
 
         SECTION("preorder should return the correct order")
         {
@@ -111,6 +109,7 @@ TEST_CASE("node")
             }
         }
 
+//        node_destroy(&root);
         clist_free(&list);
     }
 }

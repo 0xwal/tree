@@ -78,6 +78,8 @@ TEST_CASE("clist")
 
             REQUIRE(list->size == 5);
         }
+
+//        clist_free(&list);// no idea why i cannot i get segfault on freeing the memory, might be due to the test framework?
     }
 
     SECTION("clist destroy")
