@@ -16,4 +16,4 @@ add_executable(${PROJECT_NAME}
                )
 
 target_link_libraries(${PROJECT_NAME} Catch2::Catch2)
-target_link_libraries(${PROJECT_NAME} ${_TARGET})
+target_link_libraries(${PROJECT_NAME} ${CMAKE_PROJECT_NAME})
