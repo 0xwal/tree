@@ -70,6 +70,7 @@ int bst_find(binary_search_tree_s* bst, int value)
 
 void bst_destroy(binary_search_tree_s** bst)
 {
+    node_destroy(&(*bst)->root);
     free(*bst);
     *bst = NULL;
 }

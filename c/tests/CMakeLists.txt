@@ -1,4 +1,4 @@
-project(${PROJECT_NAME}_test CXX)
+project(${PROJECT_NAME}_tests CXX)
 
 
 Include(FetchContent)

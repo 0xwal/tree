@@ -47,12 +47,9 @@ TEST_CASE("node")
         {
             node_insert_right(root, 6);
             node_insert_left(root, 7);
-
             node_destroy(&root);
-
             REQUIRE(root == NULL);
         }
-
     }
 
 
@@ -110,6 +107,7 @@ TEST_CASE("node")
             }
         }
 
-
+        clist_destroy(&list);
+        node_destroy(&root);
     }
 }
