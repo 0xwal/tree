@@ -3,13 +3,13 @@
 #include <catch2/catch.hpp>
 #include <binary-search-tree.h>
 
-#define COMPARE_NODES(clistPointer, values...) \
-    int expectedValues[] = values;         \
+#define COMPARE_NODES(clistPointer, expectedValuesIn...) \
+    int expectedValues[] = expectedValuesIn;         \
     int expectedSize = sizeof(expectedValues) / 4; \
     REQUIRE(expectedSize == clistPointer->size); \
     for (int i = 0; i < expectedSize; ++i) \
     {                                        \
-        REQUIRE(clistPointer->data[i] == expectedValues[i]);\
+        REQUIRE(*reinterpret_cast<int*>(clistPointer->values[i]) == expectedValues[i]);\
     }
 
 TEST_CASE("binary search tree")
@@ -59,10 +59,10 @@ TEST_CASE("binary search tree")
             bst_add(bst, 4);
             bst_add(bst, 5);
             bst_add(bst, 6);
-            clist_s* list = clist_init(16);
+            clist_s* list = clist_create(16);
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 4, 5, 6 });
-            clist_free(&list);
+            clist_destroy(&list);
         }
 
         SECTION("should add a smaller value than the current node to left")
@@ -70,10 +70,10 @@ TEST_CASE("binary search tree")
             bst_add(bst, 6);
             bst_add(bst, 5);
             bst_add(bst, 4);
-            clist_s* list = clist_init(16);
+            clist_s* list = clist_create(16);
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 4 });
-            clist_free(&list);
+            clist_destroy(&list);
         }
 
         SECTION("mixed with larger and smaller")
@@ -83,10 +83,10 @@ TEST_CASE("binary search tree")
             bst_add(bst, 5);
             bst_add(bst, 3);
             bst_add(bst, 4);
-            clist_s* list = clist_init(16);
+            clist_s* list = clist_create(16);
             node_preorder_traversal(bst->root, list);
             COMPARE_NODES(list, { 6, 5, 3, 4, 8 });
-            clist_free(&list);
+            clist_destroy(&list);
         }
 
         bst_destroy(&bst);

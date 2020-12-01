@@ -30,7 +30,7 @@ void node_preorder_traversal(node_s* root, clist_s* list)
         return;
     }
 
-    clist_add(list, root->data);
+    clist_add(list, &root->data);
     node_preorder_traversal(root->left, list);
     node_preorder_traversal(root->right, list);
 }
@@ -43,7 +43,7 @@ void node_inorder_traversal(node_s* root, clist_s* list)
     }
 
     node_inorder_traversal(root->left, list);
-    clist_add(list, root->data);
+    clist_add(list, &root->data);
     node_inorder_traversal(root->right, list);
 }
 
@@ -56,7 +56,7 @@ void node_postorder_traversal(node_s* root, clist_s* list)
 
     node_postorder_traversal(root->left, list);
     node_postorder_traversal(root->right, list);
-    clist_add(list, root->data);
+    clist_add(list, &root->data);
 }
 
 

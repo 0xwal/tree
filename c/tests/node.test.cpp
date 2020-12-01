@@ -1,5 +1,6 @@
 #include <catch2/catch.hpp>
 #include <node.h>
+#include <clist.h>
 
 TEST_CASE("node")
 {
@@ -70,7 +71,7 @@ TEST_CASE("node")
         node_insert_right(innerRight, 4);
         node_insert_left(innerLeft, 5);
 
-        clist_s* list = clist_init(16);
+        clist_s* list = clist_create(16);
 
         SECTION("preorder should return the correct order")
         {
@@ -80,7 +81,7 @@ TEST_CASE("node")
 
             for (int i = 0; i < 5; ++i)
             {
-                REQUIRE(expected[i] == list->data[i]);
+                REQUIRE(expected[i] == *reinterpret_cast<int*>(list->values[i]));
             }
         }
 
@@ -93,7 +94,7 @@ TEST_CASE("node")
             int expected[] = { 5, 3, 0, 2, 4 };
             for (int i = 0; i < 5; ++i)
             {
-                REQUIRE(expected[i] == list->data[i]);
+                REQUIRE(expected[i] == *reinterpret_cast<int*>(list->values[i]));
             }
         }
 
@@ -105,11 +106,10 @@ TEST_CASE("node")
             int expected[] = { 5, 3, 4, 2, 0 };
             for (int i = 0; i < 5; ++i)
             {
-                REQUIRE(expected[i] == list->data[i]);
+                REQUIRE(expected[i] == *reinterpret_cast<int*>(list->values[i]));
             }
         }
 
-//        node_destroy(&root);
-        clist_free(&list);
+
     }
 }
