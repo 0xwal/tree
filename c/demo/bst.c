@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <node.h>
+#include <binary-search-tree.h>
 
 void print_preorder_traversal(node_s* root, clist_s* list);
 
@@ -19,14 +20,14 @@ int main()
     node_insert_right(innerLeft, 6);
     node_insert_left(innerLeft, 5);
 
-    clist_s* list = clist_init(16);
+    clist_s* list = clist_create(16);
 
     print_preorder_traversal(root, list);
     print_inorder_traversal(root, list);
     print_postorder_traversal(root, list);
 
 
-    clist_free(&list);
+    clist_destroy(&list);
     node_destroy(&root);
 
     return 0;
@@ -39,7 +40,7 @@ void print_preorder_traversal(node_s* root, clist_s* list)
 
     for (int i = 0; i < list->size; ++i)
     {
-        printf("%d ", list->data[i]);
+        printf("%d ", *(int*)list->values[i]);
     }
     printf("\n");
 }
@@ -51,7 +52,7 @@ void print_inorder_traversal(node_s* root, clist_s* list)
 
     for (int i = 0; i < list->size; ++i)
     {
-        printf("%d ", list->data[i]);
+        printf("%d ", *(int*)list->values[i]);
     }
     printf("\n");
 }
@@ -63,7 +64,7 @@ void print_postorder_traversal(node_s* root, clist_s* list)
 
     for (int i = 0; i < list->size; ++i)
     {
-        printf("%d ", list->data[i]);
+        printf("%d ", *(int*)list->values[i]);
     }
     printf("\n");
 }
